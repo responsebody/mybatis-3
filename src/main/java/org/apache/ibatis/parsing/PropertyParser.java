@@ -53,17 +53,26 @@ public class PropertyParser {
   public static String parse(String string, Properties variables) {
     VariableTokenHandler handler = new VariableTokenHandler(variables);
     GenericTokenParser parser = new GenericTokenParser("${", "}", handler);
+//    执行解析
     return parser.parse(string);
   }
 
+//  变量token处理器
   private static class VariableTokenHandler implements TokenHandler {
     private final Properties variables;
     private final boolean enableDefaultValue;
     private final String defaultValueSeparator;
 
+	  /**
+	   *变量
+	   * @param variables
+	   */
     private VariableTokenHandler(Properties variables) {
       this.variables = variables;
+//      启用默认值特性 默认false  启动：props.setProperty(PropertyParser.KEY_ENABLE_DEFAULT_VALUE, "true");
+//		 <property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value" value="true"/>
       this.enableDefaultValue = Boolean.parseBoolean(getPropertyValue(KEY_ENABLE_DEFAULT_VALUE, ENABLE_DEFAULT_VALUE));
+//		默认值的分隔符：':'
       this.defaultValueSeparator = getPropertyValue(KEY_DEFAULT_VALUE_SEPARATOR, DEFAULT_VALUE_SEPARATOR);
     }
 

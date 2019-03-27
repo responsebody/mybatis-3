@@ -134,6 +134,7 @@ public class XPathParser {
     this.document = createDocument(new InputSource(reader));
   }
 
+  //创建XPathParser
   public XPathParser(InputStream inputStream, boolean validation, Properties variables, EntityResolver entityResolver) {
     commonConstructor(validation, variables, entityResolver);
     this.document = createDocument(new InputSource(inputStream));
@@ -206,6 +207,7 @@ public class XPathParser {
     return (Double) evaluate(expression, root, XPathConstants.NUMBER);
   }
 
+//  TODO. 喜欢xml
   public List<XNode> evalNodes(String expression) {
     return evalNodes(document, expression);
   }
@@ -231,6 +233,13 @@ public class XPathParser {
     return new XNode(this, node, variables);
   }
 
+	/**
+	 * 解析xml
+	 * @param expression 表达式
+	 * @param root 节点
+	 * @param returnType 返回类型
+	 * @return 值
+	 */
   private Object evaluate(String expression, Object root, QName returnType) {
     try {
       return xpath.evaluate(expression, root, returnType);
@@ -284,6 +293,7 @@ public class XPathParser {
     this.validation = validation;
     this.entityResolver = entityResolver;
     this.variables = variables;
+//    创建XPathFactory
     XPathFactory factory = XPathFactory.newInstance();
     this.xpath = factory.newXPath();
   }

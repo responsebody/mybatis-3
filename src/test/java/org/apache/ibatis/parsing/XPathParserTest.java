@@ -23,7 +23,10 @@ import org.apache.ibatis.io.Resources;
 import org.junit.Test;
 
 public class XPathParserTest {
-
+	/**
+	 * FIXME XPathParserTest
+	 * @throws Exception
+	 */
   @Test
   public void shouldTestXPathParserMethods() throws Exception {
     String resource = "resources/nodelet_test.xml";
