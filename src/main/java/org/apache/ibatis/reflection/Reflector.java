@@ -59,6 +59,7 @@ public class Reflector {
 
   public Reflector(Class<?> clazz) {
     type = clazz;
+//    添加默认构造方法
     addDefaultConstructor(clazz);
     addGetMethods(clazz);
     addSetMethods(clazz);
@@ -238,6 +239,10 @@ public class Reflector {
     return result;
   }
 
+	/**
+	 * 添加 fields
+	 * @param clazz
+	 */
   private void addFields(Class<?> clazz) {
     Field[] fields = clazz.getDeclaredFields();
     for (Field field : fields) {
@@ -288,9 +293,11 @@ public class Reflector {
    * @param cls The class
    * @return An array containing all methods in this class
    */
+//  所有方法
   private Method[] getClassMethods(Class<?> cls) {
     Map<String, Method> uniqueMethods = new HashMap<>();
     Class<?> currentClass = cls;
+//    从当前一直向上找
     while (currentClass != null && currentClass != Object.class) {
       addUniqueMethods(uniqueMethods, currentClass.getDeclaredMethods());
 
