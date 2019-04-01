@@ -99,7 +99,7 @@ public class Reflector {
     }
     resolveGetterConflicts(conflictingGetters);
   }
-
+// 解决get冲突方法，一个属性一个方法
   private void resolveGetterConflicts(Map<String, List<Method>> conflictingGetters) {
     for (Entry<String, List<Method>> entry : conflictingGetters.entrySet()) {
       Method winner = null;
@@ -329,7 +329,7 @@ public class Reflector {
       }
     }
   }
-
+// returnType#MethodName:参数,参数,参数
   private String getSignature(Method method) {
     StringBuilder sb = new StringBuilder();
     Class<?> returnType = method.getReturnType();
